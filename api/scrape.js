@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const page = await browser.newPage();
 
     // Increase timeout here explicitly:
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 });
 
     let products = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('.clsProd')).map(product => {
