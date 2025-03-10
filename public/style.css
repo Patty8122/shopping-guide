@@ -1,48 +1,99 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .instructions {
-    background-color: #e7f3ff;
-    padding: 15px;
-    border-radius: 5px;
-  }
-  
-  form {
-    background-color: #fff;
-    padding:15px;
-    border-radius:5px;
-    box-shadow:0px2px5px rgba(0,0,0,.1);
-  }
-  
-  input[type=url], select, textarea {
-    width:100%;
-    padding:8px;
-  }
-  
-  button {
-    padding:10px15px;
-  }
-  
-  .card {
-    background-color:#fff;
-    padding:15px;
-    margin-top:10px;
-    box-shadow:0px2px5px rgba(0,0,0,.1);
-  }
-  
-  .rename-btn {
-    margin-top:10px;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Main Title */
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Instructions Box */
+.instructions {
+  background-color: #e7f3ff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow:0px 2px 5px rgba(0,0,0,.1);
+}
+
+/* Inputs, Selects, Textareas */
+input[type=url], select, textarea {
+  width:100%;
+  padding:10px;
+  box-sizing:border-box; /* ensures padding doesn't overflow container */
+  margin-bottom:15px;
+}
+
+/* Button Styling */
+button {
+  padding:10px 15px;
+  width:100%;
+  background-color:#007bff;
+  color:#fff;
+  border:none;
+  border-radius:4px;
+}
+
+button:hover {
+  background-color:#0056b3;
+}
+
+/* Product Cards */
+.card {
+  background-color:#fff;
+  padding:15px;
+  margin-top:10px;
+  box-shadow:0px2px5px rgba(0,0,0,.1);
+}
+
+/* Rename Button */
+.rename-btn {
+  margin-top:10px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width:600px) {
+
+    .container{
+        padding:10px; /* less padding on small screens */
+    }
+
+    h1{
+        font-size:1.5rem; /* slightly smaller heading on phones */
+    }
+
+    form{
+        padding:10px; /* less form padding on mobile */
+    }
+
+    input[type=url], select, textarea{
+        font-size:14px; /* slightly smaller input text size on phones */
+    }
+
+    button{
+        font-size:16px; /* easier-to-tap buttons on mobile */
+    }
+
+    .card{
+        padding:10px; /* compact cards for mobile screens */
+    }
+}
