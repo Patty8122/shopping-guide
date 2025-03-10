@@ -1,3 +1,4 @@
+// api/scrape.js
 import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 
@@ -10,27 +11,30 @@ export default async function handler(req, res) {
 
   try {
     const browser = await puppeteer.launch({
-      args: chromium.args,
+      args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
       executablePath: await chromium.executablePath(),
       headless: chromium.headless,
+      defaultViewport: chromium.defaultViewport,
     });
-    const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle0' });
 
-    let products = await page.evaluate(() => {
+    const page = await browser.newPage();
+
+    // Increase timeout here explicitly:
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 }); // 90 seconds
+
+    const products = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('.clsProd')).map(product => {
         const titleElement = product.querySelector('.clsTitle') || product.querySelector('.clsDetails .prodName');
         return titleElement ? titleElement.textContent.trim() : '';
       }).filter(Boolean);
     });
 
-    products = products.filter(product => product !== "[Name2]");
-
     await browser.close();
-
+    
     res.status(200).json({ products });
+    
   } catch (error) {
-    console.error(error);
+    console.error("Error during scraping:", error);
     res.status(500).json({ error: error.message });
   }
 }
