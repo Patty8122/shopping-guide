@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
+import puppeteer from 'puppeteer-core';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,7 +9,11 @@ export default async function handler(req, res) {
   const { url } = req.body;
 
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 

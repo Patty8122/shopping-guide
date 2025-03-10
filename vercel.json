@@ -1,8 +1,10 @@
 {
     "version": 2,
-    "routes": [
-      {"src": "/api/scrape", "dest": "/api/scrape.js"},
-      {"src": "/api/rename", "dest": "/api/rename"}
-    ]
+    "functions": {
+      "api/*.js": {
+        "memory": 1024,
+        "maxDuration": 30
+      }
+    }
   }
   
