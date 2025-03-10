@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .instructions {
+    background-color: #e7f3ff;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  form {
+    background-color: #fff;
+    padding:15px;
+    border-radius:5px;
+    box-shadow:0px2px5px rgba(0,0,0,.1);
+  }
+  
+  input[type=url], select, textarea {
+    width:100%;
+    padding:8px;
+  }
+  
+  button {
+    padding:10px15px;
+  }
+  
+  .card {
+    background-color:#fff;
+    padding:15px;
+    margin-top:10px;
+    box-shadow:0px2px5px rgba(0,0,0,.1);
+  }
+  
+  .rename-btn {
+    margin-top:10px;
+  }
+  

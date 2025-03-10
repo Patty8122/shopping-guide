@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>🛒 Quicklly Shopping Guide </h1>
+
+  <!-- Instructions -->
+  <div class="instructions">
+    <p>
+      Enter the URL of the product page you want to scrape. The tool will extract product names and allow you to generate simplified names and shopping guides for each product individually.
+    </p>
+  </div>
+
+  <!-- Scraping Form -->
+  <form id="scrapeForm">
+    <label for="urlInput"><strong>Step 1: Enter URL to scrape</strong></label><br>
+    <!-- <input type="url" id="urlInput" placeholder="https://example.com/products" required><br><br> -->
+    <select id="urlInput">
+        <option value="https://www.quicklly.com/indian-grocery-delivery/near-me-in-chicago-il">Quicklly Indian Grocery</option>
+        <option value="https://www.quicklly.com/indian-grocery/chicago-il/order-organic-produce">Quicklly Organic Produce</option>
+        <option value="https://www.quicklly.com/indian-grocery/chicago-il/order-halal-meat-poultry">Quicklly Meat</option>
+        <option value="https://www.quicklly.com/indian-grocery/chicago-il/order-household-items">Quicklly Indian Household Items</option>
+        <option value="https://www.quicklly.com/indian-grocery/chicago-il/order-beverages">Quicklly Indian Beverages</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <div id="otherUrlInput" style="display:none;">
+      <input type="url" id="otherUrl" placeholder="Enter custom URL">
+    </div>
+    <label for="modelSelect"><strong>Step 2: Select AI Model</strong></label><br>
+    <select id="modelSelect">
+        <option value="gpt-4o">OpenAI GPT-4o</option>
+        <option value="gpt-4o-mini">OpenAI GPT-4o Mini</option>
+        <option value="gemini-1.5-pro">Google Gemini-1.5 Pro</option>
+      <!-- Add other models similarly -->
+    </select><br><br>
+
+    <!-- Optional System Prompt -->
+    <details>
+      <summary><strong>Advanced: Customize System Prompt (Optional)</strong></summary><br>
+      <textarea id="systemPrompt" rows="6" cols="60">You are an expert at simplifying Indian product names without losing brand identity. Given a product name, return a JSON object with four keys:
+- "name": clear product name with brand and product type
+- "category": relevant sub-category of the product.
+- "type": relevant meal type (e.g., breakfast, meal, snack, dessert, starter, main course, side dish, beverage, appetizer, salad, soup, sauce, dip, dressing).
+- "shopping_guide": Provide a simple guide to help non-Indian audiences understand the product.
+
+Respond strictly in JSON format with no additional text or markdown.</textarea><br><br>
+    </details>
+
+    <!-- Submit Button -->
+    <button type="submit">🚀 Scrape Products</button>
+  </form>
+
+  <!-- Results Section -->
+  <div id="productList"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
