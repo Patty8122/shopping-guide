@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       headless: chromium.headless,
     });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2' });
+    await page.goto(url, { waitUntil: 'networkidle0' });
 
     let products = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('.clsProd')).map(product => {
