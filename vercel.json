@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [
       {"src": "/api/scrape", "dest": "/api/scrape.js"},
-      {"source": "/api/rename", "destination": "/api/rename"}
+      {"src": "/api/rename", "dest": "/api/rename"}
     ]
   }
   
