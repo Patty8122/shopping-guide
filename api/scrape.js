@@ -22,12 +22,14 @@ export default async function handler(req, res) {
     // Increase timeout here explicitly:
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 }); // 90 seconds
 
-    const products = await page.evaluate(() => {
+    let products = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('.clsProd')).map(product => {
         const titleElement = product.querySelector('.clsTitle') || product.querySelector('.clsDetails .prodName');
         return titleElement ? titleElement.textContent.trim() : '';
       }).filter(Boolean);
     });
+
+    products = products.filter(product => product !== "[Name2]");
 
     await browser.close();
     
